@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>sierpinski gasket</title>
+</head>
+<body>
+    <canvas id="canvas" width="600" height="600"></canvas>
+    <script>
+        /**
+         * 参考:
+         * RustとWebAssemblyによるゲーム開発 ―安全・高速・プラットフォーム非依存のWebアプリ開発入門
+         * Eric Smith　著、中田 秀基　訳
+         * https://www.oreilly.co.jp/books/9784814400393/
+         * https://github.com/PacktPublishing/Game-Development-with-Rust-and-WebAssembly/releases/tag/chapter_1
+         * 
+         */
+
+        function main() {
+            const canvas = document.getElementById("canvas");
+            const context = canvas.getContext("2d");
+
+            let top = [300, 0];
+            let left = [0, 600];
+            let right = [600, 600];
+            let depth = 5;
+            let rgb = getRgb();
+            sierpinski(context, top, left, right, depth, rgb);
+        }
+
+        function sierpinski(context, top, left, right, depth, rgb) {
+            drawTriangle(context, top, left, right, rgb);
+
+            let nextDepth = depth - 1;
+            if (nextDepth > 0) {
+                let middleLeft = middlePosition(top, left);
+                let middleRight = middlePosition(top, right);
+                let middleBottom = middlePosition(left, right);
+                let nextRgb = getRgb();
+
+                // 三角形の内側に小さい三角形を3つ描画する
+                // 上側の三角形
+                sierpinski(context, top, middleLeft, middleRight, nextDepth, nextRgb);
+                // 左下の三角形
+                sierpinski(context, middleLeft, left, middleBottom, nextDepth, nextRgb);
+                // 右下の三角形
+                sierpinski(context, middleRight, middleBottom, right, nextDepth, nextRgb);
+            }
+        }
+
+        function drawTriangle(context, top, left, right, rgb) {
+            context.fillStyle = `rgb(${rgb.r},${rgb.g},${rgb.b})`;
+            context.moveTo(top[0], top[1]);
+            context.beginPath();
+            context.lineTo(left[0], left[1]);
+            context.lineTo(right[0], right[1]);
+            context.lineTo(top[0], top[1]);
+            context.closePath();
+            context.fill();
+        }
+
+        function middlePosition(pos1, pos2) {
+            let x = (pos1[0] + pos2[0]) / 2;
+            let y = (pos1[1] + pos2[1]) / 2;
+            return [x, y];
+        }
+
+        function getRgb() {
+            // Math.floor(Math.random() * 3); 
+            // 0,1 or 2
+
+            // 0~255
+            return {
+                r: Math.floor(Math.random() * 256),
+                g: Math.floor(Math.random() * 256),
+                b: Math.floor(Math.random() * 256)
+            };
+        }
+
+        main();
+    </script>
+</body>
+</html>
