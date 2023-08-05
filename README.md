@@ -8,13 +8,13 @@ You confirm in the browser that it is rendered in <a href="https://hibi221b.gith
 <!-- 1 -->
 <tr>
 <td align="center">
-  <img width="1604" alt="sierpinski_gasket" src="https://github.com/hibi221b/fractal_algorithm/assets/29950288/cbb743bf-8397-4763-80d7-b4f230c649ec"> 
-  <a href="https://github.com/hibi221b/fractal_algorithm/blob/main/sierpinski_gasket.html">sierpinski gasket<a/>
+  <img width="1604" alt="sierpinski_gasket" src="https://github.com/hibi221b/fractal_algorithm/assets/29950288/cbb743bf-8397-4763-80d7-b4f230c649ec">
+  <a href="https://github.com/hibi221b/fractal_algorithm/blob/main/sierpinski_gasket.html">sierpinski gasket<a/> | <a href="https://hibi221b.github.io/fractal_algorithm/sierpinski_gasket.html">web</a>
 </td>
   
 <td align="center">
   <img width="1604" alt="sierpinski_carpet" src="https://github.com/hibi221b/fractal_algorithm/assets/29950288/81875308-14ba-4bb2-8ef6-1c1cbc78acf5"> 
-  <a href="https://github.com/hibi221b/fractal_algorithm/blob/main/sierpinski_carpet.html">sierpinski_carpet<a/>
+  <a href="https://github.com/hibi221b/fractal_algorithm/blob/main/sierpinski_carpet.html">sierpinski carpet<a/> | <a href="https://hibi221b.github.io/fractal_algorithm/sierpinski_carpet.html">web</a>
 </td>
   
 <td align="center">
