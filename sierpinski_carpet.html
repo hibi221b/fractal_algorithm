@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>sierpinski carpet</title>
+</head>
+<body>
+    <canvas id="canvas" width="600" height="600"></canvas>
+    <script>
+        /**
+         * 参考:
+         * Recursive patterns – the Sierpinski Carpet
+         * https://craftofcoding.wordpress.com/2018/05/10/recursive-patterns-the-sierpinski-carpet/
+         * https://craftofcoding.wordpress.com/about/
+         * 
+         */
+
+        function main() {
+            const canvas = document.getElementById("canvas");
+            const context = canvas.getContext("2d");
+
+            let size = 600;
+            let x = 0;
+            let y = 0;
+            let depth = 5;
+            sierpinskiCarpet(context, x, y, size, depth);
+        }
+
+        function sierpinskiCarpet(context, x, y, size, depth) {
+            let fillStyle = "rgb(0,0,0)";
+            let centerRectFillStyle = "rgb(255,255,255)";
+            let splitedSize = size / 3;
+            let maxBlock = 9;
+            let centerBlock = 4;
+            for(let i = 0; i < maxBlock; i++) {
+                let pos = subsquarePosition(splitedSize, i, x, y);
+                context.fillStyle = i == centerBlock ? centerRectFillStyle : fillStyle;
+                context.fillRect(pos[0], pos[1], splitedSize, splitedSize);
+            }
+
+            let nextDepth = depth - 1;
+            if(nextDepth > 0) {
+                for(let i = 0; i < maxBlock; i++) {
+                    let pos = subsquarePosition(splitedSize, i, x, y);
+                    if(i == centerBlock) {
+                        continue;
+                    }
+                    sierpinskiCarpet(context, pos[0], pos[1], splitedSize, nextDepth);
+                }
+            }
+        }
+
+        function subsquarePosition(splitedSize, blockNumber, x, y) {
+            let subSquarePosX = blockNumber % 3 * splitedSize + x;
+            let subSquarePosY = Math.floor(blockNumber / 3) * splitedSize + y;
+            return [subSquarePosX, subSquarePosY];
+        }
+        
+        main();
+    </script>
+</body>
+</html>
