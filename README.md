@@ -1,6 +1,5 @@
 # fractal_algorithm
 This repository uses <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">the canvas api</a> to draw fractals. (HTML, JavaScript) <br>
-You confirm in the browser that it is rendered in <a href="https://hibi221b.github.io/fractal_algorithm/">github pages</a>.
 
 <table>
 <tbody>
